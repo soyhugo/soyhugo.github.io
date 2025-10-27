@@ -16,3 +16,124 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+/* global safe defaults */
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 100%; overflow-x: hidden; }
+
+/* layout container */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+
+/* hero */
+.hero { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; }
+.hero-title { 
+  font-size: clamp(28px, 6vw, 64px);
+  line-height: 1.1;
+  /* keep the headline from shrinking to one word per line */
+  max-width: 20ch; 
+  margin: 0 auto;
+  word-break: break-word;
+}
+.hero-sub {
+  max-width: 60ch;
+  margin: 12px auto 0;
+  font-size: clamp(14px, 2.8vw, 18px);
+  line-height: 1.6;
+}
+
+/* ascii art */
+.ascii {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  white-space: pre; 
+  line-height: 0.9;
+  font-size: clamp(8px, 2.8vw, 12px);
+  opacity: .9;
+}
+
+/* icon row top-right */
+.top-icons { display: flex; gap: 10px; }
+.top-icons a { width: 36px; height: 36px; display: grid; place-items: center; }
+
+/* screenshots */
+.spotlight { max-width: 900px; margin: 0 auto; }
+.spotlight img { width: 100%; height: auto; border-radius: 12px; }
+
+/* phones and small tablets */
+@media (max-width: 768px) {
+  .hero { grid-template-columns: 1fr; text-align: center; }
+  .hero .ascii, .hero .copy { justify-self: center; }
+  .hero-title { min-height: clamp(64px, 10vw, 120px); } /* reserves space so the button doesn’t jump */
+  .btn-primary { padding: 12px 16px; font-size: 15px; }
+  .section { padding: 40px 0; }
+}
+
+/* very small phones */
+@media (max-width: 430px) {
+  .hero-title { max-width: 18ch; }
+  .ascii { font-size: 9px; }  /* or: display:none; if you’d rather hide it */
+}
+
+/* Donut ASCII container */
+.ascii-wrap {
+  max-width: 100%;
+  overflow-x: hidden;   /* no scrollbar line */
+  overflow-y: visible;
+  margin: 0 auto;
+  scrollbar-width: none; /* Firefox: hide scrollbar (kept if toggled) */
+}
+.ascii-wrap::-webkit-scrollbar { display: none; } /* Chrome/Safari/Edge */
+
+/* Default = desktop size (big) */
+.ascii {
+  display: block;
+  white-space: pre;      /* never wrap */
+  line-height: 0.92;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: clamp(14px, 1.05vw, 22px);
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .ascii { font-size: clamp(11px, 2.6vw, 16px); }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .ascii { font-size: clamp(10px, 3.3vw, 14px); }
+}
+
+/* ===== Donut size controller ===== */
+:root {
+  --donut-ch: 20px;          /* desktop size — tweak to match your “perfect” old look (try 20–22px) */
+}
+
+@media (max-width: 900px) {   /* tablets */
+  :root { --donut-ch: 14px; }
+}
+
+@media (max-width: 480px) {   /* small phones */
+  :root { --donut-ch: 11px; }
+}
+
+/* ===== Donut block ===== */
+.ascii-wrap {
+  max-width: 100%;
+  overflow-x: hidden;         /* no scrollbar line */
+  overflow-y: visible;
+  margin: 0 auto;
+}
+
+.ascii {
+  display: block;
+  white-space: pre;           /* never wrap ASCII lines */
+  line-height: 0.92;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: var(--donut-ch); /* use the variable */
+}
+
+/* make sure nothing clips it */
+.hero, .hero > * { min-height: auto; }
+
+/* Avoid clipping from parents and center alignment when ASCII is tall */
+.hero, .hero > * { min-height: auto; }
+.hero { align-items: start; }

@@ -13,6 +13,7 @@ class About extends React.Component {
     this.handleSelect = this.handleSelect.bind(this);
   }
   imgCandidates = [
+    "/headshot.jpg",        // recommended public path fallback
     "/assets/hugo.jpg",
     "/assets/hugo.jpeg",
     "/assets/Hugo.jpg",
@@ -112,6 +113,7 @@ class About extends React.Component {
     <div className="about-image">
       <img
         alt="Hugo Lopez Garcia"
+        className="about-photo"
         src={`${this.imgCandidates[this.state.imageIndex]}?v=2`}
         onError={this.handleImgError}
       />

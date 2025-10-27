@@ -152,8 +152,8 @@ const Donut = () => {
 
   return (
     <div className="donut-wrap">
-      <div className="donut-inner">
-        <pre id="donut" ref={preRef} aria-hidden="true" />
+      <div className="ascii-wrap">
+        <pre id="donut" className="ascii" ref={preRef} aria-hidden="true" />
       </div>
     </div>
   );

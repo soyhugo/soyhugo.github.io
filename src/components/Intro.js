@@ -23,12 +23,12 @@ class Intro extends React.Component {
   }
   render() {
     return (
-      <section id="intro" className="hero">
+      <section id="intro" className="hero container">
         <div className="hero-content">
-          <div className="hero-left">
+          <div className="hero-left ascii">
             <Donut />
           </div>
-          <div className="hero-right">
+          <div className="hero-right copy">
             <h1 className="hero-title">
               <TypewriterText />
             </h1>

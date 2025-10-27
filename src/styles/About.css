@@ -59,6 +59,17 @@
   border: none;
 }
 
+/* Responsive photo class applied in About.js */
+.about-photo {
+  width: 100%;
+  height: auto;
+  max-width: 420px;
+  border-radius: 16px;
+  display: block;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+  margin: 12px auto;
+}
+
 @media only screen and (max-width: 788px) {
   .about-image img {
     max-width: 200px;
@@ -87,9 +98,7 @@
     font-size: 17px;
   }
 
-  .about-image img {
-    display: none;
-  }
+  /* Keep photo visible on mobile; allow it to scale down */
 
   .about-content {
     display: unset;
