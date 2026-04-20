@@ -50,6 +50,25 @@
   border: none;
 }
 
+/* Tablet and below: give the donut real room to render */
+@media (max-width: 900px) {
+  .donut-wrap {
+    width: min(420px, 70vw);
+  }
+}
+
+@media (max-width: 600px) {
+  .donut-wrap {
+    width: min(360px, 82vw);
+  }
+}
+
+@media (max-width: 380px) {
+  .donut-wrap {
+    width: 88vw;
+  }
+}
+
 /* .donut-inner removed in markup; using .ascii-wrap instead */
 
 /* the ASCII <pre> fully covers the inner square */

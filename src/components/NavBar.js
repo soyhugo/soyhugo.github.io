@@ -10,7 +10,7 @@ import "../styles/NavBar.css";
 class NavBar extends React.Component {
   render() {
     return (
-      <Navbar fixed="top" className="bg-body-tertiary">
+      <Navbar fixed="top" expand="md" className="bg-body-tertiary hlg-navbar">
         <Container>
           <Navbar.Brand href="#">Hugo Lopez Garcia</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -21,15 +21,28 @@ class NavBar extends React.Component {
               <Nav.Link href="#experience">Experience</Nav.Link>
               <Nav.Link href="#projects">Projects</Nav.Link>
             </Nav>
-            <Nav className="ml-auto">
-              <Nav.Link href="mailto:hugolopezgarcia2005@gmail.com">
-                <EmailRoundedIcon style={{ fontSize: 20 }}></EmailRoundedIcon>
+            <Nav className="ml-auto hlg-social">
+              <Nav.Link
+                href="mailto:hugolopezgarcia2005@gmail.com"
+                aria-label="Email Hugo"
+              >
+                <EmailRoundedIcon style={{ fontSize: 20 }} />
               </Nav.Link>
-              <Nav.Link href="https://github.com/soyhugo" target="_blank" rel="noopener noreferrer">
-                <GitHubIcon style={{ fontSize: 19 }}></GitHubIcon>
+              <Nav.Link
+                href="https://github.com/soyhugo"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+              >
+                <GitHubIcon style={{ fontSize: 19 }} />
               </Nav.Link>
-              <Nav.Link href="http://www.linkedin.com/in/hugolopezgarcia" target="_blank" rel="noopener noreferrer">
-                <LinkedInIcon style={{ fontSize: 21 }}></LinkedInIcon>
+              <Nav.Link
+                href="http://www.linkedin.com/in/hugolopezgarcia"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
+                <LinkedInIcon style={{ fontSize: 21 }} />
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>

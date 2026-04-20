@@ -2,105 +2,121 @@
   min-height: 50vh;
   margin: auto;
   max-width: 1000px;
-  padding-top: 50px;
-}
-
-.about-description ul {
-  padding-top: 20px;
-  list-style-type: none;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(150px, 10px));
-}
-
-.about-description li {
-  position: relative;
-  padding-left: 20px;
-  font-size: 18px;
-  color: var(--slate);
-}
-
-.about-description li::before {
-  content: "▹    ";
-  color: var(--green-bright);
-  position: absolute;
-  left: 0;
+  padding-top: 80px;
 }
 
 .about-content {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 3rem;
+  align-items: start;
 }
 
 .about-description {
   font-family: "NTR", sans-serif;
-  color: var(--slate);
-  max-width: 600px;
-  font-size: 22px;
-  text-align: justify;
+  color: var(--light-slate);
+  font-size: 19px;
+  line-height: 1.65;
+  text-align: left;
   margin: 0;
+}
+
+.about-description p {
+  margin-bottom: 1rem;
 }
 
 .about-description a,
 .about-description b {
-  font-size: 21px;
+  font-size: inherit;
   font-weight: bold;
 }
 
+.about-description a {
+  color: var(--green-bright);
+  transition: color 0.15s ease;
+}
+
+.about-description a:hover {
+  color: var(--white);
+}
+
+/* Tech stack as chips */
+.about-description .tech-stack {
+  padding-top: 14px;
+  padding-left: 0;
+  margin: 10px 0 0 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.about-description .tech-stack li {
+  position: static;
+  padding: 5px 12px;
+  font-family: "NTR", sans-serif;
+  font-size: 14px;
+  color: var(--green-bright);
+  border: 1px solid rgba(100, 255, 218, 0.3);
+  border-radius: 999px;
+  background: rgba(100, 255, 218, 0.06);
+  letter-spacing: 0.02em;
+}
+
+.about-description .tech-stack li::before {
+  content: none;
+}
+
 .about-image {
-  padding-left: 40px;
+  display: flex;
+  justify-content: center;
 }
 
-.about-image img {
-  max-width: 300px;
-  height: auto;
-  border-radius: 10px;
-  margin-left: 30px;
-  box-shadow: 6px 13px 23px -5px rgba(0, 0, 0, 0.46);
-  border: none;
-}
-
-/* Responsive photo class applied in About.js */
 .about-photo {
   width: 100%;
+  max-width: 340px;
   height: auto;
-  max-width: 420px;
-  border-radius: 16px;
   display: block;
-  box-shadow: 0 10px 30px rgba(0,0,0,.25);
-  margin: 12px auto;
+  border-radius: 16px;
+  box-shadow: 0 14px 30px rgba(2, 12, 27, 0.6);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-@media only screen and (max-width: 788px) {
-  .about-image img {
-    max-width: 200px;
+.about-photo:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(2, 12, 27, 0.75);
+}
+
+@media (max-width: 820px) {
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .about-image {
+    order: -1; /* photo above text on narrow screens */
+  }
+
+  .about-photo {
+    max-width: 260px;
   }
 }
 
-.about-image:hover {
-  transform: translateY(-7px);
-}
-
-@media only screen and (max-width: 600px) {
+@media (max-width: 600px) {
   #about {
-    height: unset;
-    padding-left: unset;
-    padding-right: unset;
-    padding-top: 30%;
+    padding-top: 60px;
   }
 
   .about-description {
-    font-size: 18px;
-    text-align: justify;
+    font-size: 16px;
   }
 
-  .about-description a,
-  .about-description b {
-    font-size: 17px;
+  .about-description .tech-stack li {
+    font-size: 13px;
+    padding: 4px 10px;
   }
 
-  /* Keep photo visible on mobile; allow it to scale down */
-
-  .about-content {
-    display: unset;
+  .about-photo {
+    max-width: 220px;
   }
 }

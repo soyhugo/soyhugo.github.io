@@ -1,28 +1,101 @@
-.navbar {
-    background-color: var(--navy);
-    color: var(--lightest-slate);
-    font-family: 'NTR';
-    font-weight: bold;
+.hlg-navbar {
+  background-color: rgba(10, 25, 47, 0.85) !important;
+  backdrop-filter: saturate(180%) blur(10px);
+  -webkit-backdrop-filter: saturate(180%) blur(10px);
+  color: var(--lightest-slate);
+  font-family: "NTR";
+  font-weight: bold;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(100, 255, 218, 0.06);
+  box-shadow: 0 8px 20px -14px rgba(2, 12, 27, 0.9);
+}
+
+.hlg-navbar .navbar-brand {
+  color: var(--lightest-slate) !important;
+  font-size: 18px;
+  letter-spacing: 0.02em;
+}
+
+.hlg-navbar .navbar-nav .nav-link {
+  color: var(--lightest-slate) !important;
+  position: relative;
+  padding: 0.5rem 0.85rem !important;
+  transition: color 0.15s ease;
+}
+
+.hlg-navbar .navbar-nav .nav-link:hover,
+.hlg-navbar .navbar-nav .nav-link:focus {
+  color: var(--green-bright) !important;
+}
+
+/* subtle underline accent on hover for text links */
+.hlg-navbar .me-auto .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 6px;
+  height: 1px;
+  background: var(--green-bright);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+
+.hlg-navbar .me-auto .nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+.hlg-social {
+  flex-direction: row !important;
+  align-items: center;
+  gap: 4px;
+}
+
+.hlg-social .nav-link {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 8px !important;
+}
+
+/* Toggle (hamburger) button */
+.hlg-navbar .navbar-toggler {
+  border: 1px solid rgba(100, 255, 218, 0.35);
+  padding: 6px 10px;
+}
+
+.hlg-navbar .navbar-toggler:focus {
+  box-shadow: 0 0 0 2px rgba(100, 255, 218, 0.25);
+}
+
+.hlg-navbar .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%2364ffda' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Collapsed menu styling on mobile */
+@media (max-width: 767.98px) {
+  .hlg-navbar .navbar-collapse {
+    margin-top: 10px;
+    padding: 14px 6px;
+    background: rgba(10, 25, 47, 0.95);
+    border-radius: 12px;
+    border: 1px solid rgba(100, 255, 218, 0.08);
   }
 
-  .navbar-light .navbar-brand  {
-    color: var(--lightest-slate) !important;
+  .hlg-navbar .me-auto .nav-link {
+    padding: 0.6rem 0.85rem !important;
+    font-size: 17px;
   }
 
-  .navbar-light .navbar-nav .nav-link {
-    color: var(--lightest-slate) !important;
+  .hlg-navbar .me-auto .nav-link::after {
+    display: none;
   }
 
-  .navbar-light .navbar-nav .nav-link:hover {
-    color: var(--green-bright) !important;
+  .hlg-social {
+    padding-top: 8px;
+    margin-top: 6px;
+    border-top: 1px solid rgba(100, 255, 218, 0.08);
+    justify-content: flex-start;
   }
-
-  @media only screen and (max-width: 600px) {
-    .navbar-light .navbar-brand  {
-        display: none;
-    }
-  
-    .navbar-light .navbar-nav.me-auto .nav-link {
-        display: none;
-      }
-  }
+}

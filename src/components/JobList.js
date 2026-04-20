@@ -7,10 +7,20 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import FadeInSection from "./FadeInSection";
 
-const isHorizontal = window.innerWidth < 600;
+function useIsHorizontal() {
+  const [isH, setIsH] = React.useState(
+    typeof window !== "undefined" ? window.innerWidth < 600 : false
+  );
+  React.useEffect(() => {
+    const onResize = () => setIsH(window.innerWidth < 600);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+  return isH;
+}
 
 function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+  const { children, value, index, isHorizontal, ...other } = props;
 
   if (isHorizontal) {
     return (
@@ -49,10 +59,11 @@ function TabPanel(props) {
 TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired
+  value: PropTypes.any.isRequired,
+  isHorizontal: PropTypes.bool
 };
 
-function a11yProps(index) {
+function a11yProps(index, isHorizontal) {
   if (isHorizontal) {
     return {
       id: `full-width-tab-${index}`,
@@ -70,7 +81,7 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     backgroundColor: "theme.palette.background.paper",
     display: "flex",
-    height: 300
+    height: 340
   },
   tabs: {
     borderRight: `1px solid ${theme.palette.divider}`
@@ -79,9 +90,19 @@ const useStyles = makeStyles(theme => ({
 
 const JobList = () => {
   const classes = useStyles();
+  const isHorizontal = useIsHorizontal();
   const [value, setValue] = React.useState(0);
 
   const experienceItems = {
+    "ARC by ChargeItSpot": {
+      jobTitle: "AI Enablement Intern @",
+      duration: "APR 2026 – PRESENT • Philadelphia, PA",
+      desc: [
+        "Building internal AI tools that automate workflows across engineering, ops, and support teams.",
+        "Partnering with different departments to identify repeatable bottlenecks and ship tailored solutions that get used day-to-day.",
+        "Prototyping fast, iterating with stakeholders, and rolling out tooling that delivers measurable impact early in the internship."
+      ]
+    },
     "Outlier AI": {
       jobTitle: "Freelance Developer @",
       duration: "JUN 2024 – PRESENT",
@@ -133,7 +154,7 @@ const JobList = () => {
       jobTitle: "Research student – Drexel University VIP @",
       duration: "OCT 2024 – FEB 2025",
       desc: [
-        "Benchmarked 4G, Wi‑Fi, LoRa, XBee (DigiMesh), and UHF modules for reliable drone ops.",
+        "Benchmarked 4G, Wi-Fi, LoRa, XBee (DigiMesh), and UHF modules for reliable drone ops.",
         "Selected 4G as the optimal option after testing signal integrity and performance across conditions."
       ]
     }
@@ -144,20 +165,29 @@ const JobList = () => {
   };
 
   return (
-    <div className={classes.root}>
+    <div className={`${classes.root} joblist-root${isHorizontal ? " is-horizontal" : ""}`}>
       <Tabs
         orientation={!isHorizontal ? "vertical" : null}
         variant={isHorizontal ? "fullWidth" : "scrollable"}
         value={value}
         onChange={handleChange}
-        className={classes.tabs}
+        className={`${classes.tabs} joblist-tabs`}
       >
         {Object.keys(experienceItems).map((key, i) => (
-          <Tab key={key} label={isHorizontal ? `0${i}.` : key} {...a11yProps(i)} />
+          <Tab
+            key={key}
+            label={isHorizontal ? `0${i}.` : key}
+            {...a11yProps(i, isHorizontal)}
+          />
         ))}
       </Tabs>
       {Object.keys(experienceItems).map((key, i) => (
-        <TabPanel key={key} value={value} index={i}>
+        <TabPanel
+          key={key}
+          value={value}
+          index={i}
+          isHorizontal={isHorizontal}
+        >
           <span className="joblist-job-title">
             {experienceItems[key]["jobTitle"] + " "}
           </span>
