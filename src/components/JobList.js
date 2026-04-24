@@ -105,7 +105,7 @@ const JobList = () => {
     },
     "Outlier AI": {
       jobTitle: "Freelance Developer @",
-      duration: "JUN 2024 – PRESENT",
+      duration: "JUN 2024 – JAN 2026",
       desc: [
         "Evaluate and improve Large Language Models (LLMs) with rubric-based testing.",
         "Review GitHub pull requests for outsourced AI projects; run structured test workflows and validate results.",
@@ -134,7 +134,7 @@ const JobList = () => {
     },
     "AI Assistants (Freelance)": {
       jobTitle: "AI Automation Developer @",
-      duration: "AUG 2025 – PRESENT",
+      duration: "AUG 2025 – DEC 2025",
       desc: [
         "Design and deliver custom AI agents that automate email replies, scheduling, and client reminders.",
         "Built on n8n MCP servers with WhatsApp API integrations; reduced admin time ~50% for clients.",
@@ -143,7 +143,7 @@ const JobList = () => {
     },
     "Know Your Body": {
       jobTitle: "Founder & Project Manager @",
-      duration: "JUN 2024 – JUN 2025",
+      duration: "JUN 2024 – PRESENT",
       desc: [
         "Interactive 3D symptom-mapping tool using Three.js to help users identify pain zones visually.",
         "Led an 8-person team; backend with Flask + MongoDB and a modern HTML/CSS + Three.js frontend.",
